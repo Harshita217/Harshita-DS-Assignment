@@ -1,6 +1,8 @@
-# Example for substation_service
-FROM python:3.10
+FROM python:3.9-slim
 WORKDIR /app
+COPY requirements.txt .
 COPY main.py .
-RUN pip install flask prometheus_client requests
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install flask requests
 CMD ["python", "main.py"]
+EXPOSE 5000 8000
